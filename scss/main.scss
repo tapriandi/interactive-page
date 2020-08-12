@@ -1,0 +1,58 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.background-container {
+  position: relative;
+  height: 100vh;
+  // height: calc(100vh - 20px);
+  overflow: hidden;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  & {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+    
+  .static, .layer {
+    position: absolute;
+    display: flex;
+    top: 0;
+  }
+  .static img {
+    width: 100vw;
+  }
+  .layer img {
+    height: 100vh;
+  }
+}
+.container {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  .leo-container {
+    position: absolute;
+    left: 50%;
+    bottom: 20px;
+    #leo {
+      position: relative;
+      left: -50%;
+      width: 200px;
+      height: 175px;
+      overflow: hidden;
+      .leo-slides {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 1800px;
+        height: 400px;
+        background-image: url(../images/robby-slides.png);
+      }
+    }
+  }
+}
