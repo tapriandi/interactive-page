@@ -18,7 +18,7 @@ $green-op: rgba(51, 153, 102, 0.8);
   width: 80px;
   height: 80px;
   border-radius: 50%;
-  animation: pulse 1.5s infinite cubic-bezier(0.66, 0, 0, 1);
+  animation: pulse 1.2s infinite cubic-bezier(0.66, 0, 0, 1);
   img {
     position: relative;
     top: 50%;
@@ -49,7 +49,9 @@ $green-op: rgba(51, 153, 102, 0.8);
   }
 }
 @keyframes pulse {
-  to {box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);}
+  to {
+    box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+  }
 }
 
 .header {
@@ -69,7 +71,7 @@ $green-op: rgba(51, 153, 102, 0.8);
       height: 100%;
     }
   }
-  .wrapper {
+  .menu-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -122,17 +124,64 @@ $green-op: rgba(51, 153, 102, 0.8);
   }
 }
 
-.main-bg {
-  position: relative;
+// .main-bg {
+//   position: relative;
+//   height: 100vh;
+//   z-index: -1;
+//   overflow-y: hidden;
+//   -ms-overflow-style: none;  /* IE and Edge */
+//   scrollbar-width: none;  /* Firefox */
+//   &::-webkit-scrollbar {
+//     display: none; /* IE, Edge and Firefox */
+//   }
+//   img {
+//     height: 100%;
+//   }
+// }
+
+.wrapper {
+  width: 100%;
   height: 100vh;
-  z-index: -1;
-  overflow-y: hidden;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-  &::-webkit-scrollbar {
-    display: none; /* IE, Edge and Firefox */
-  }
-  img {
+  overflow: hidden;
+}
+.sections {
+  width: 500%;
+  height: 100%;
+  .main-bg {
+    position: absolute;
     height: 100%;
+    left: 0;
+    top: 0;
+    img {
+      height: 100%;
+    }
   }
+  .section {
+    position: relative;
+    display: flex;
+    float: left;
+    height: 100%;
+    align-items: center;
+    width: calc(100% / 5);
+    justify-content: center;
+    &:nth-child(1) {
+      background: #26262660;
+    }
+    &:nth-child(2) {
+      background: #22a7f060;
+    }
+    &:nth-child(3) {
+      background: #f9690e60;
+    }
+    &:nth-child(4) {
+      background: #9b59b660;
+    }
+    &:nth-child(5) {
+      background: #03c9a960;
+    }
+  }
+}
+.sectionTitle {
+  font-size: 80px;
+  color: $red;
 }
