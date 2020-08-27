@@ -25,6 +25,8 @@ $(window).ready( function() {
     $('#dry-product-msg').toggleClass('close')
   })
 
+  var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
+
   const insto = document.querySelector('#insto')
   const wrapper = document.querySelector('#wrapper')
   const slides = insto.querySelectorAll('.insto_slide')
@@ -42,8 +44,8 @@ $(window).ready( function() {
   new ScrollMagic.Scene({
     triggerElement: insto,
     triggerHook: 'onLeave',
-    duration: '2000%'
-    // duration: `${amount * 100}%`
+    // duration: '2500%'
+    duration: `${amount * 1000}%`
   })
     .setPin(insto)
     .setTween(horizontal)
@@ -69,8 +71,21 @@ $(window).ready( function() {
 
   })
 
+  // intialize scrollbar
+  var scroll = Scrollbar.init(
+    document.querySelector("#container-scroll")
+  );
+  // listener smooth-scrollbar, update controller
+  scroll.addListener(function(status) {
+    y = status.offset.y;
+    if(isChrome){ 
+      controller.update();
+    } else {
+      scenes.forEach(function(scene){
+          scene.refresh();       
+      });
+    }
+  });
 
-  // set padding-top
-  // $('.scrollmagic-pin-spacer')
   
 })
