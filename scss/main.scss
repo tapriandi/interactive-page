@@ -94,75 +94,61 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }
 }
 
-.pulse-btn {
+.main-bg {
   position: absolute;
-  cursor: pointer;
-  height: 60px;
-  width: 60px;
-  top: 55%;
-  left: 42%;
-  border-radius: 50%;
-  transition: $jelly;
-  // animation: pulse 1.2s infinite cubic-bezier(0.3, 0, 0, 1);
+  height: 100%;
+  left: 0;
+  top: 0;
+  z-index: -1;
   img {
+    height: 100%;
+  }
+}
+.insto {
+  overflow: hidden;
+
+  &_wrapper {
     position: relative;
-    top: 50%;
-    left: 50%;
-    width: 60%;
-    transform: translate(-50%, -50%);
+    display: flex;
+    height: 100vh;
   }
-  &:hover {
-    transform: scale(1.3);
-  }
-  &.-a {
+
+  &_slide {
+    position: relative;
     display: flex;
     align-items: center;
-    flex-direction: column;
-    img {
-      top: unset;
-      left: unset;
-      width: 35%;
-      margin: 3px 0;
-      transform: translate(0,0);
+    // width: 100vw;
+    &.one {
+      width: 20%;
     }
-    p {
-      font-size: 12px;
-      width: 60%;
-      color: white;
-      text-align: center;
+    &.two {
+      // background: #22a7f060;
+      width: 20%;
+    }
+    &.three {
+      // background: #f9690e60;
+      width: 25%;
+    }
+    &.four {
+      width: 10%;
+    }
+    &.five {
+      // background: #9b59b660;
+      width: 25%;
     }
   }
-  &.red {
-    background: $red;
-    box-shadow: 0 0 0 0 $red-op;
+
+  &_content {
+    width: 100%;
+    height: 100%;
   }
-  &.green {
-    background: $green;
-    box-shadow: 0 0 0 0 $green-op;
-  }
-  &.blue {
-    background: $blue;
-    box-shadow: 0 0 0 0 $blue-op;
-  }
-  &.bluedark {
-    background: $bluedark;
-    box-shadow: 0 0 0 0 $bluedark-op;
-  }
-  &.top {
-    top: 40%;
-  }
-  &.left {
-    left: 20%;
-  }
-  &.center {
-    left: 50%;
+
+  &_title,
+  &_subtitle {
+    position: relative;
   }
 }
-@keyframes pulse {
-  to {
-    box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
-  }
-}
+
 .msg-group {
   position: absolute;
   height: 60px;
@@ -206,10 +192,17 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     }
   }
   .pulse-btn {
+    cursor: pointer;
     width: 100%;
     height: 100%;
-    left: unset;
-    top: unset;
+    z-index: 1;
+    border-radius: 50%;
+    transform: scale(0);
+    transition: $jelly;
+    animation: pulse 1.2s infinite cubic-bezier(0.3, 0, 0, 1);
+    &:hover, &:focus {
+      transform: scale(1.4);
+    }
     .kedip {
       height: 100%;
       width: 100%;
@@ -217,17 +210,25 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       object-fit: cover;
       object-position: 0px 0;
       overflow: hidden; 
+      transition: $jelly;
       animation: kedip 5s infinite steps(150) forwards;
+      &:hover, &:focus {
+        transform: scale(1.4);
+      }
     }
-    &.-a {
+    &.-buka {
       display: flex;
       align-items: center;
       flex-direction: column;
+      transition: $jelly;
+      &:hover, &:focus {
+        transform: scale(1.4);
+      }
       img {
         top: unset;
         left: unset;
         width: 35%;
-        margin: 3px 0;
+        margin: 5px 0 3px 0;
         transform: translate(0,0);
       }
       p {
@@ -236,6 +237,22 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
         color: white;
         text-align: center;
       }
+    }
+    &.red {
+      background: $red;
+      box-shadow: 0 0 0 0 $red-op;
+    }
+    &.green {
+      background: $green;
+      box-shadow: 0 0 0 0 $green-op;
+    }
+    &.blue {
+      background: $blue;
+      box-shadow: 0 0 0 0 $blue-op;
+    }
+    &.bluedark {
+      background: $bluedark;
+      box-shadow: 0 0 0 0 $bluedark-op;
     }
   }
   &.top {
@@ -256,52 +273,58 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     object-position: calc(-60*150px) 0;
   }
 }
+@keyframes pulse {
+  to {
+    box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+  }
+}
 
-.wrapper {
-  height: 100vh;
-  overflow: hidden;
-}
-.sections {
-  width: 500%;
-  height: 100%;
+
+// .wrapper {
+//   height: 100vh;
+//   overflow: hidden;
+// }
+// .sections {
+//   width: 500%;
+//   height: 100%;
   
-  .main-bg {
-    position: absolute;
-    height: 100%;
-    left: 0;
-    top: 0;
-    img {
-      height: 100%;
-    }
-  }
-  .section {
-    position: relative;
-    display: flex;
-    float: left;
-    height: 100%;
-    align-items: center;
-    justify-content: center;
-    &.one {
-      width: 21%;
-    }
-    &.two {
-      // background: #22a7f060;
-      width: 21%;
-    }
-    &.three {
-      // background: #f9690e60;
-      width: 25%;
-    }
-    &.four {
-      width: 10%;
-    }
-    &.five {
-      // background: #9b59b660;
-      width: 23%;
-    }
-  }
-}
-.sectionTitle {
-  font-size: 80px;
-  color: $red;
-}
+//   .main-bg {
+//     position: absolute;
+//     height: 100%;
+//     left: 0;
+//     top: 0;
+//     img {
+//       height: 100%;
+//     }
+//   }
+//   .section {
+//     position: relative;
+//     display: flex;
+//     float: left;
+//     height: 100%;
+//     align-items: center;
+//     justify-content: center;
+//     &.one {
+//       width: 21%;
+//     }
+//     &.two {
+//       // background: #22a7f060;
+//       width: 21%;
+//     }
+//     &.three {
+//       // background: #f9690e60;
+//       width: 25%;
+//     }
+//     &.four {
+//       width: 10%;
+//     }
+//     &.five {
+//       // background: #9b59b660;
+//       width: 23%;
+//     }
+//   }
+// }
+// .sectionTitle {
+//   font-size: 80px;
+//   color: $red;
+// }

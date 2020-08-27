@@ -5,17 +5,16 @@ $(window).ready( function() {
 
   // set width
   var widthBg = $('.main-bg img').width();
-  $('.sections').css({width: widthBg + 'px'});
-  console.log(widthBg);
+  $('.insto_wrapper').css({width: widthBg + 'px'});
+  // console.log(widthBg);
 
   // set width on resize
   $( window ).resize(function() {
     widthBg = $('.main-bg img').width();
-    console.log(widthBg);
-
-    $('.sections').css({width: widthBg + 'px'});
+    $('.insto_wrapper').css({width: widthBg + 'px'});
   });
 
+  // toggle btn message
   $('#reg-eye').click(function() {
     $('#reg-eye-msg').toggleClass('close')
   })
@@ -26,28 +25,52 @@ $(window).ready( function() {
     $('#dry-product-msg').toggleClass('close')
   })
 
-  var titles = $(".sectionTitle"),
-      controller = new ScrollMagic.Controller(),
-      tl = new TimelineMax();
+  const insto = document.querySelector('#insto')
+  const wrapper = document.querySelector('#wrapper')
+  const slides = insto.querySelectorAll('.insto_slide')
+  const amount = slides.length
+  const horizontal = new TimelineMax()
+  const controller = new ScrollMagic.Controller()
+  const controller2 = new ScrollMagic.Controller({
+    vertical: false,
+  })
 
-  // create timeline
-  // this could also be created in a loop
-  tl.to("#insto-slideContainer", 1, {xPercent: -20}, "label1");
-  tl.to("#insto-slideContainer", 1, {xPercent: -40}, "label2");
-  tl.to("#insto-slideContainer", 1, {xPercent: -60}, "label3");
-  tl.to("#insto-slideContainer", 1, {xPercent: -80}, "label4");
+  horizontal.add([
+    TweenMax.to(wrapper, 1, { x: `-${(100 / amount) * (amount - 1)}%` })
+  ])
 
   new ScrollMagic.Scene({
-    triggerElement: "#insto-wrapper",
-    triggerHook: "onLeave",
-    duration: "1200%"
+    triggerElement: insto,
+    triggerHook: 'onLeave',
+    duration: '2000%'
+    // duration: `${amount * 100}%`
   })
-    .setPin("#insto-slideContainer")
-    .setTween(tl)
+    .setPin(insto)
+    .setTween(horizontal)
+    .addTo(controller)
+
+  slides.forEach((item) => {
+    const pulse = item.querySelectorAll('.pulse-btn')
+    const tween = new TimelineMax()
+    tween.to(pulse, 1, {
+      transitionDelay: '1.5s',
+      transform: 'scale(1)',
+      animation: 'pulse 1.2s infinite cubic-bezier(0.3, 0, 0, 1)'
+    }, 0)
+    new ScrollMagic.Scene({
+      triggerElement: item,
+      triggerHook: 'onCenter',
+      offset: -300,
+      duration: '20%'
+    })
+    .setTween(tween)
+    .addTo(controller2)
     .addIndicators()
-    .addTo(controller);
-  
+
+  })
+
+
+  // set padding-top
+  // $('.scrollmagic-pin-spacer')
   
 })
-
-// $('.main-bg img').width() == $('.sections').width()
