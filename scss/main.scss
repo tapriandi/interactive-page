@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  outline: none;
   box-sizing: border-box;
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
@@ -14,6 +15,7 @@ $red: #ff3333;
 $red-op: rgba(255, 51, 51, 0.8);
 $blue: #0099ff;
 $blue-op: rgba(0, 153, 255, 0.8);
+$purple: #523091;
 $green: #339966;
 $green-op: rgba(51, 153, 102, 0.8);
 $bluedark: #006699;
@@ -22,7 +24,7 @@ $bluedark-op: rgba(0, 102, 153, 0.8);
 $jelly : all .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
-
+$ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px 1px 0 #fff, -3px 2px 0 #fff, -3px 3px 0 #fff, -2px -3px 0 #fff, -2px -2px 0 #fff, -2px -1px 0 #fff, -2px 0px 0 #fff, -2px 1px 0 #fff, -2px 2px 0 #fff, -2px 3px 0 #fff, -1px -3px 0 #fff, -1px -2px 0 #fff, -1px -1px 0 #fff, -1px 0px 0 #fff, -1px 1px 0 #fff, -1px 2px 0 #fff, -1px 3px 0 #fff, 0px -3px 0 #fff, 0px -2px 0 #fff, 0px -1px 0 #fff, 0px 0px 0 #fff, 0px 1px 0 #fff, 0px 2px 0 #fff, 0px 3px 0 #fff, 1px -3px 0 #fff, 1px -2px 0 #fff, 1px -1px 0 #fff, 1px 0px 0 #fff, 1px 1px 0 #fff, 1px 2px 0 #fff, 1px 3px 0 #fff, 2px -3px 0 #fff, 2px -2px 0 #fff, 2px -1px 0 #fff, 2px 0px 0 #fff, 2px 1px 0 #fff, 2px 2px 0 #fff, 2px 3px 0 #fff, 3px -3px 0 #fff, 3px -2px 0 #fff, 3px -1px 0 #fff, 3px 0px 0 #fff, 3px 1px 0 #fff, 3px 2px 0 #fff, 3px 3px 0 #fff;
 
 .header {
   position: fixed;
@@ -104,8 +106,106 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     height: 100%;
   }
 }
+
+
+.insto-start {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $blue-op;
+
+  #loader {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    text-align: center;
+    transform: translateY(-50%);
+    .box-loader {
+      position: relative;
+      top: 45%;
+      .dot {
+        width: 20px;
+        height: 20px;
+        background: $w;
+        margin-right: 5px;
+        border-radius: 50%;
+        display: inline-block;
+      }
+    }
+  }
+  #start {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    z-index: -2;
+    opacity: 0;
+    transition: 5s;
+    overflow: hidden;
+    .box-img {
+      position: relative;
+      display: flex;
+      left: 0;
+      z-index: 1;
+      width: 100%;
+      height: 100%;
+      transition: 3s;
+      flex-direction: column;
+      .sky-bg {
+        height: auto;
+      }
+      .start-bg {
+        height: 100%;
+      }
+    }
+    .box-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: 2;
+      text-align: center;
+      transform: translate(-50%, -50%);
+      h2 {
+        position: relative;
+        text-shadow: $ts;
+        font-size: 40px;
+        color: $green;
+        margin-bottom: 50px;
+      }
+      .start-btn {
+        cursor: pointer;
+        border: none;
+        color: $bluedark;
+        background: $w;
+        font-size: 20px;
+        padding: 10px 40px 7px 40px;
+        transition: .3s;
+        border-radius: 6px;
+        box-shadow: 4px 4px 0 gray;
+        &:hover {
+          color: $w;
+          background-color: $blue-op;
+        }
+        &:active {
+          color: $w;
+          background-color: $green;
+          box-shadow: 2px 2px 0 gray;
+          transform: translate(4px, 4px);
+        }
+      }
+    }
+  }
+}
+
 .insto {
   overflow: hidden;
+  // display: none;
 
   &_wrapper {
     position: relative;
@@ -165,7 +265,7 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
     line-height: 1.4;
     padding-right: 60px;
     border-radius: 20px;
-    background: white;
+    background: $w;
     transition: $jelly2;
     transform: scale(0);
     transform-origin: left bottom;
@@ -234,7 +334,7 @@ $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
       p {
         font-size: 12px;
         width: 60%;
-        color: white;
+        color: $w;
         text-align: center;
       }
     }
