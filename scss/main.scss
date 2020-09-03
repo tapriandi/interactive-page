@@ -107,29 +107,28 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
   }
 }
 
-
 .insto-start {
-  display: none;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: $blue-op;
+  z-index: 5;
+  // width: 100%;
+  // height: 100%;
+  background: $blue;
 
   #loader {
     position: absolute;
-    height: 100%;
-    width: 100%;
-    top: 50%;
+    height: 100vh;
+    width: 100vw;
     left: 0;
     right: 0;
     opacity: 0;
     text-align: center;
-    transform: translateY(-50%);
     .box-loader {
       position: relative;
-      top: 45%;
+      top: 50%;
+
+      transform: translateY(-50%);
       .dot {
         width: 20px;
         height: 20px;
@@ -159,18 +158,27 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
       flex-direction: column;
       .sky-bg {
         height: auto;
+        width: 100%;
       }
       .start-bg {
-        height: 100%;
+        height: 100vh;
+        width: auto;
       }
     }
     .box-text {
       position: absolute;
-      top: 50%;
-      left: 50%;
+      height: 100vh;
+      width: 100vw;
+      top: 0;
+      left: 0;
       z-index: 2;
       text-align: center;
-      transform: translate(-50%, -50%);
+      .inner-wrapper {
+        position: relative;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
       h2 {
         position: relative;
         text-shadow: $ts;
@@ -309,7 +317,7 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
       z-index: 1;
       object-fit: cover;
       object-position: 0px 0;
-      overflow: hidden; 
+      overflow: hidden;
       transition: $jelly;
       animation: kedip 5s infinite steps(150) forwards;
       &:hover, &:focus {
@@ -365,6 +373,7 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
     left: 50%;
   }
 }
+
 @keyframes kedip {
   from {
     object-position: 0px 0;
@@ -373,58 +382,9 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
     object-position: calc(-60*150px) 0;
   }
 }
+
 @keyframes pulse {
   to {
     box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
   }
 }
-
-
-// .wrapper {
-//   height: 100vh;
-//   overflow: hidden;
-// }
-// .sections {
-//   width: 500%;
-//   height: 100%;
-  
-//   .main-bg {
-//     position: absolute;
-//     height: 100%;
-//     left: 0;
-//     top: 0;
-//     img {
-//       height: 100%;
-//     }
-//   }
-//   .section {
-//     position: relative;
-//     display: flex;
-//     float: left;
-//     height: 100%;
-//     align-items: center;
-//     justify-content: center;
-//     &.one {
-//       width: 21%;
-//     }
-//     &.two {
-//       // background: #22a7f060;
-//       width: 21%;
-//     }
-//     &.three {
-//       // background: #f9690e60;
-//       width: 25%;
-//     }
-//     &.four {
-//       width: 10%;
-//     }
-//     &.five {
-//       // background: #9b59b660;
-//       width: 23%;
-//     }
-//   }
-// }
-// .sectionTitle {
-//   font-size: 80px;
-//   color: $red;
-// }
