@@ -1,28 +1,28 @@
-$(window).ready( function() {
-  $('.menu').click( function() {
-    $('.box-lines').toggleClass('active')
+jQuery(window).ready( function() {
+  jQuery('.menu').click( function() {
+    jQuery('.box-lines').toggleClass('active')
   });
 
   // set width
-  var mainBgWidth = $('.main-bg img').width();
-  $('.insto_wrapper').css({width: mainBgWidth + 'px'});
+  var mainBgWidth = jQuery('.main-bg img').width();
+  jQuery('.insto_wrapper').css({width: mainBgWidth + 'px'});
   // console.log(mainBgWidth);
 
   // set width on resize
-  $( window ).resize(function() {
-    mainBgWidth = $('.main-bg img').width();
-    $('.insto_wrapper').css({width: mainBgWidth + 'px'});
+  jQuery( window ).resize(function() {
+    mainBgWidth = jQuery('.main-bg img').width();
+    jQuery('.insto_wrapper').css({width: mainBgWidth + 'px'});
   });
 
   // toggle btn message
-  $('#reg-eye').click(function() {
-    $('#reg-eye-msg').toggleClass('close')
+  jQuery('#reg-eye').click(function() {
+    jQuery('#reg-eye-msg').toggleClass('close')
   });
-  $('#dry-eye').click(function() {
-    $('#dry-eye-msg').toggleClass('close')
+  jQuery('#dry-eye').click(function() {
+    jQuery('#dry-eye-msg').toggleClass('close')
   });
-  $('#dry-product').click(function() {
-    $('#dry-product-msg').toggleClass('close')
+  jQuery('#dry-product').click(function() {
+    jQuery('#dry-product-msg').toggleClass('close')
   });
   
   var isChrome = /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
@@ -39,14 +39,14 @@ $(window).ready( function() {
       });
 
     horizontal.add([
-      TweenMax.to(wrapper, 1, { x: `-${(100 / amount) * (amount - 1)}%` })
+      TweenMax.to(wrapper, 1, { x: '-' +( 100 / amount) * (amount - 1) + '%' })
     ]);
 
     new ScrollMagic.Scene({
       triggerElement: insto,
       triggerHook: 'onLeave',
       // duration: '2500%'
-      duration: `${amount * 2000}%`
+      duration: amount * 2000 +'%'
     })
       .setPin(insto)
       .setTween(horizontal)
@@ -90,8 +90,8 @@ $(window).ready( function() {
   // instoPlay()
 
   // loader
-  var dots = $('.dot'),
-      loader = $('#loader'),
+  var dots = jQuery('.dot'),
+      loader = jQuery('#loader'),
       tlLoader = new TimelineMax({
         repeat: 1,
         onComplete: loadStart
@@ -111,8 +111,8 @@ $(window).ready( function() {
     );
   
   // after loading - start
-  var startContainer = $('#start'),
-      skyBgHeight = $('.sky-bg').height()
+  var startContainer = jQuery('#start'),
+      skyBgHeight = jQuery('.sky-bg').height()
 
   function loadStart() {
     new TimelineMax()
@@ -123,11 +123,11 @@ $(window).ready( function() {
       })
   };
 
-  var instoStartBtn = $('#insto-start-btn')
+  var instoStartBtn = jQuery('#insto-start-btn')
   function clickStart() {
     new TimelineMax()
       .to(start, 0.5, {
-        y: `-${skyBgHeight}px`
+        y: '-' + skyBgHeight + 'px'
       })
   }
 
@@ -135,13 +135,13 @@ $(window).ready( function() {
   instoStartBtn.click(function() {
     clickStart()
     setTimeout(function() {
-      $('#insto').css({
+      jQuery('#insto').css({
         display: 'block',
         opacity: 1,
         zIndex: 10,
         transition: '0.8s'
       });
-      $('.insto-start').css({
+      jQuery('.insto-start').css({
         zIndex: '-1', display: 'none'
       })
       instoPlay()
