@@ -36,18 +36,19 @@ jQuery(window).ready(function () {
       wrapper = document.querySelector('#wrapper'),
       slides = insto.querySelectorAll('.insto_slide'),
       amount = slides.length,
+      bike = new TimelineMax({
+        repeat: 5
+      }),
       horizontal = new TimelineMax(),
       controller = new ScrollMagic.Controller(),
       controller2 = new ScrollMagic.Controller({
         vertical: false
       });
-
-    horizontal.add([
-      TweenMax.to(wrapper, 1, {
-        x: '-' + (100 / amount) * (amount - 1) + '%'
-      })
-    ]);
-
+    
+    // Insto animation scroll
+    horizontal.to(wrapper, 1, {
+      x: '-' + (100 / amount) * (amount - 1) + '%'
+    })
     new ScrollMagic.Scene({
         triggerElement: insto,
         triggerHook: 'onLeave',
@@ -75,6 +76,26 @@ jQuery(window).ready(function () {
         .addTo(controller2)
       // .addIndicators()
     });
+
+    // Bike animation scroll
+    bike.to({
+      frame: 0
+    }, 1, {
+      frame: animation.totalFrames - 1,
+      onUpdate: function () {
+        animation.goToAndStop((Math.round(this.progress() * 300)), true)
+      },
+      ease: Linear.easeNone
+    })
+    new ScrollMagic.Scene({
+        duration: '1500%',
+        offset: 1
+      })
+      .setPin(".insto-bike-wrapper")
+      .setTween(bike)
+      .addTo(controller);
+
+
 
     // intialize smooth scrollbar
     var scroll = Scrollbar.init(
