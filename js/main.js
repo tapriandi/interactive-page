@@ -66,7 +66,16 @@ jQuery(window).ready(function () {
       // .addIndicators()
     });
 
-    // Bike animation scroll
+    // lottie bike animation
+    var animation = bodymovin.loadAnimation({
+      container: document.getElementById('insto-bike'),
+      path: './path/insto-bike.json',
+      renderer: 'svg',
+      loop: true,
+      autoplay: false,
+      name: "insto bike",
+    });
+
     var bike = new TimelineMax({
       repeat: 10
     });
@@ -109,15 +118,7 @@ jQuery(window).ready(function () {
   // instoPlay()
 
 
-  // lottie bike animation
-  var animation = bodymovin.loadAnimation({
-    container: document.getElementById('insto-bike'),
-    path: '/path/insto-bike.json',
-    renderer: 'svg',
-    loop: true,
-    autoplay: false,
-    name: "insto bike",
-  });
+  
 
   // loader
   var dots = jQuery('.dot'),
