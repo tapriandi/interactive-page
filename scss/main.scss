@@ -143,7 +143,7 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
     width: 100%;
     z-index: -2;
     opacity: 0;
-    transition: 5s;
+    transition: 5s ease;
     overflow: hidden;
     .box-img {
       position: relative;
@@ -258,20 +258,17 @@ $ts: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px
 
 .insto-bike-wrapper {
   position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
+  top: 65%;
+  left: 20%;
   z-index: 3;
+  width: 45vh;
+  height: 30vh;
   overflow: hidden;
 
   #insto-bike {
-    position: absolute;
-    top: 80%;
-    left: 18%;
-    width: 26%;
-    z-index: 2;
-    overflow: hidden;
-    transform: translateY(-50%);
+    position: relative;
+    width: 100%;
+    height: 100%;
   }
 }
 

@@ -4,19 +4,11 @@ jQuery(window).ready(function () {
   });
 
   // set width
-  var mainBgWidth = jQuery('.main-bg img').width();
+  var mainBgWidth = (jQuery('.main-bg img').width() * 0.90);
   jQuery('.insto_wrapper').css({
     width: mainBgWidth + 'px'
   });
   // console.log(mainBgWidth);
-
-  // set width on resize
-  jQuery(window).resize(function () {
-    mainBgWidth = jQuery('.main-bg img').width();
-    jQuery('.insto_wrapper').css({
-      width: mainBgWidth + 'px'
-    });
-  });
 
   // toggle btn message
   jQuery('#reg-eye').click(function () {
@@ -36,9 +28,6 @@ jQuery(window).ready(function () {
       wrapper = document.querySelector('#wrapper'),
       slides = insto.querySelectorAll('.insto_slide'),
       amount = slides.length,
-      bike = new TimelineMax({
-        repeat: 5
-      }),
       horizontal = new TimelineMax(),
       controller = new ScrollMagic.Controller(),
       controller2 = new ScrollMagic.Controller({
@@ -78,6 +67,9 @@ jQuery(window).ready(function () {
     });
 
     // Bike animation scroll
+    var bike = new TimelineMax({
+      repeat: 10
+    });
     bike.to({
       frame: 0
     }, 1, {
@@ -88,7 +80,7 @@ jQuery(window).ready(function () {
       ease: Linear.easeNone
     })
     new ScrollMagic.Scene({
-        duration: '1500%',
+        duration: amount * 1000 + '%',
         offset: 1
       })
       .setPin(".insto-bike-wrapper")
@@ -153,7 +145,7 @@ jQuery(window).ready(function () {
 
   // after loading - start
   var startContainer = jQuery('#start'),
-    skyBgHeight = jQuery('.sky-bg').height()
+    skyBgHeight = jQuery('.sky-bg').height();
 
   function loadStart() {
     new TimelineMax()
@@ -164,7 +156,7 @@ jQuery(window).ready(function () {
       })
   };
 
-  var instoStartBtn = jQuery('#insto-start-btn')
+  var instoStartBtn = jQuery('#insto-start-btn');
 
   function clickStart() {
     new TimelineMax()
@@ -191,3 +183,11 @@ jQuery(window).ready(function () {
     }, 5000)
   })
 })
+
+// set width on resize
+jQuery(window).resize(function () {
+  mainBgWidth = jQuery('.main-bg img').width();
+  jQuery('.insto_wrapper').css({
+    width: mainBgWidth + 'px'
+  });
+});
