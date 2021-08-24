@@ -2,14 +2,16 @@
 
 animTitle()
 setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-setInterval(() => { document.getElementById('character').classList.add('show') }, 10000);
+setInterval(() => { document.getElementById('character').classList.add('show') }, 11000);
 
 
 function start() {
   let splash = document.querySelector('.splash');
   splash.classList.add('hide');
 
-  document.querySelector('.bg-main').style.top = 0
+  document.querySelector('.bg-home').style.top = 0
+  document.querySelector('.bg-shadow').style.top = 0
+  document.querySelector('.bg-road').style.top = 0
   
   initLottie()
   initSmoothScrollbar()
@@ -77,7 +79,7 @@ function listener({ offset }) {
 
   scrollPercent = (100 * scrollbarInstance.scrollLeft) / document.querySelector(".scene-wrapper").getBoundingClientRect().width;
   x = offset.x;
-  parallax(document.querySelector('.bg-main'), offset.x, -0.5, 1)
+  parallax(document.querySelector('.bg-home'), offset.x, -0.5, 1)
 }
 
 
