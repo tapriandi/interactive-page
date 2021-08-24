@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insto - Interactive</title>
+  <link rel="stylesheet" href="./css/main.min.css">
+</head>
+<body>
+  <div class="header">
+    <a class="icon" href="">
+      <img src="./image/header/logo-insto.png" alt="">
+    </a>
+    <div class="menu-wrapper">
+      <!--<p style="padding-right: 20px">
+        test: 
+        <span id="test"></span>
+      </p>-->
+      <a class="icon" href="">
+        <img src="./image/header/logo-combiphar.png" alt="">
+      </a>
+      <div class="menu">
+        <img src="./image/header/menu-btn.png" alt="">
+        <div class="box-lines">
+          <span class="line top"></span>
+          <span class="line mid"></span>
+          <span class="line bot"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="insto-start">
+    <div id="loader">
+      <div class="box-loader">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+    <div id="start">
+      <div class="box-img">
+        <img class="sky-bg" src="./image/main/sky-bg.png" alt="">
+        <img class="start-bg" src="./image/main/start-bg.png" alt="">
+      </div>
+      <div class="box-text">
+        <div class="inner-wrapper">
+          <h2>Kenali Matamu</h2>
+          <button id="insto-start-btn" class="start-btn">START</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div id="insto" class="insto">
+    <div id="wrapper" class="insto_wrapper">
+      <div class="main-bg">
+        <img src="./image/main/main-bg.png" alt="">
+      </div>
+
+      <section class="insto_slide one">
+        <div class="insto_content">
+          <div class="msg-group">
+            <div class="pulse-btn red pulse-1a" id="reg-eye">
+              <img class="kedip" src="./image/btn/reg-eye.png" alt="">
+            </div>
+            <div class="msg" id="reg-eye-msg">
+              <p>Asap kendaraan lain, debu, lalu polusi yang kamu temui dalam perjalanan ke kantor bisa terkena mata dan membuatnya merah. <br> Bila itu terjadi...</p>
+              <img src="./image/red-eye-people.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insto_slide two">
+        <div class="insto_content">
+          <div class="msg-group left" >
+            <div class="pulse-btn green -buka ">
+              <img src="./image/icon/eye.png" alt="">
+              <p>Buka Insto</p>
+            </div>
+          </div>
+          <div class="msg-group top">
+            <div class="pulse-btn blue -buka ">
+              <img src="./image/icon/eye.png" alt="">
+              <p>Buka Insto</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insto_slide three">
+        <div class="insto_content">
+          <div class="msg-group left">
+            <div class="pulse-btn bluedark left" id="dry-eye">
+              <img class="kedip" src="./image/btn/dry-eye.png" alt="">
+            </div>
+            <div class="msg" id="dry-eye-msg">
+              <p>Ruang kantor yang ber-AC, menatap layar komputer selama beberapa jam bisa membuat matamu lelah dan kering sehingga menganggu konsentrasimu saat bekerja </p>
+              <img src="./image/red-eye-people.png" alt="">
+            </div>
+          </div>
+  
+          <div class="msg-group top center" id="dry-product">
+            <div class="pulse-btn -buka blue top center">
+              <img src="./image/icon/eye.png" alt="">
+              <p>Buka Insto</p>
+            </div>
+            <div class="msg -a" id="dry-product-msg">
+              <p>Taeke a break! <br>
+                Istirahatkan matamu sejenak <br>
+                dan tetes Insto Dry Ayes untuk <br>
+                melembabkan kembali <br>
+                mata yang kering.
+              </p>
+              <img src="./image/insto-dry.png" alt="">
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="insto_slide four">
+        <div class="insto_content">
+        </div>
+      </section>
+
+      <section class="insto_slide five">
+        <div class="insto_content">
+          <div class="msg-group left top">
+            <div class="pulse-btn bluedark">
+              <img class="kedip" src="./image/btn/dry-eye.png" alt="">
+            </div>
+          </div>
+          <div class="msg-group">
+            <div class="pulse-btn -buka blue">
+              <img src="./image/icon/eye.png" alt="">
+              <p>Buka Insto</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <div class="insto-bike-wrapper">
+    <div id="insto-bike"></div>
+  </div>
+  
+  <script src="./js/jquery-3.5.1.min.js"></script>
+  <script src="./js/TweenMax.min.js"></script>
+  <script src="./js/ScrollMagic.min.js"></script>
+  <script src="./js/animation.gsap.js"></script>
+  <script src="./js/smooth-scrollbar.min.js"></script>
+  <script src="./js/lottie-5.7.3.min.js"></script>
+  <script src="./js/debug.addIndicators.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

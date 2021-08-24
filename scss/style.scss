@@ -1,0 +1,181 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+}
+
+@font-face {
+  font-family: 'Tommy Soft';
+  src: url('../assets/fonts/MADETommySoft-Bold.eot');
+  src: url('../assets/fonts/') format('embedded-opentype'),
+      url('../assets/fonts/MADETommySoft-Bold.woff2') format('woff2'),
+      url('../assets/fonts/MADETommySoft-Bold.woff') format('woff'),
+      url('../assets/fonts/MADETommySoft-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+$darkblue: #006699;
+$green: #339966;
+
+.app-wrapper {
+  position: relative;
+  height: 100vh;
+  width: auto;
+  overflow: hidden;
+}
+
+.bg {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+
+  &-base {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &-main {
+    position: absolute;
+    z-index: 2;
+    top: 450px;
+    left: 0;
+    height: 100vh;
+    transition: 5s;
+  }
+
+  &-sky {
+    position: absolute;
+    z-index: 3;
+    top: 20%;
+    left: 100%;
+    width: 30%;
+    animation: skymove 120s linear infinite;
+
+    &.-a {
+      top: 10%;
+      left: 10%;
+      // animation: skymove 110s linear infinite;
+    }
+  }
+
+  @keyframes skymove {
+    0% { left: 100%; }
+    100% { left: -100%; }
+  }
+}
+
+.splash {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  text-align: center;
+  transition: 1s;
+  transform: translate(-50%, -50%);
+
+  &.hide {
+    opacity: 0;
+    z-index: -1;
+  }
+
+  #main-title {
+    font-family: 'Tommy Soft';
+    display: flex;
+    color: $green;
+    font-size: 70px;
+    letter-spacing: 1px;
+    padding-bottom: 20px;
+    justify-content: center;
+    text-shadow: -3px -3px 0 white, -3px -2px 0 white, -3px -1px 0 white, -3px 0px 0 white, -3px 1px 0 white, -3px 2px 0 white, -3px 3px 0 white, -2px -3px 0 white, -2px -2px 0 white, -2px -1px 0 white, -2px 0px 0 white, -2px 1px 0 white, -2px 2px 0 white, -2px 3px 0 white, -1px -3px 0 white, -1px -2px 0 white, -1px -1px 0 white, -1px 0px 0 white, -1px 1px 0 white, -1px 2px 0 white, -1px 3px 0 white, 0px -3px 0 white, 0px -2px 0 white, 0px -1px 0 white, 0px 0px 0 white, 0px 1px 0 white, 0px 2px 0 white, 0px 3px 0 white, 1px -3px 0 white, 1px -2px 0 white, 1px -1px 0 white, 1px 0px 0 white, 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 2px -3px 0 white, 2px -2px 0 white, 2px -1px 0 white, 2px 0px 0 white, 2px 1px 0 white, 2px 2px 0 white, 2px 3px 0 white, 3px -3px 0 white, 3px -2px 0 white, 3px -1px 0 white, 3px 0px 0 white, 3px 1px 0 white, 3px 2px 0 white, 3px 3px 0 white;
+
+    & > span:nth-child(1), span:nth-child(11) {
+      margin-top: 5px;
+    }
+    & > span:nth-child(2), span:nth-child(9) {
+      margin-top: 2px;
+    }
+    & > span:nth-child(10) {
+      margin-top: 3px;
+    }
+  }
+
+  button {
+    font-family: 'Tommy Soft';
+    transition-delay: 1000;
+    padding: 6px 40px;
+    cursor: pointer;
+    font-size: 24px;
+    color: $darkblue;
+    transition: 0.5s;
+    background: white;
+    border-radius: 10px;
+    border: 1px solid white;
+    box-shadow: 4px 4px gray;
+    transform: scale(0);
+    transition: .8s;
+
+    &.show {
+      transform: scale(1);
+    }
+
+    &:focus,
+    &:hover,
+    &:active {
+      color: white;
+      background: $darkblue;
+      border-color: $darkblue;
+      box-shadow: 0px 0px gray;
+    }
+  }
+}
+
+#character {
+  position: fixed;
+  left: -100%;
+  width: 26%;
+  bottom: 5%;
+  z-index: 1;
+  z-index: 4;
+  transition: 6s;
+
+  &.show {
+    left: 14%;
+  }
+
+  @media (max-width: 768px) {
+    width: 45%;
+  }
+}
+
+.scroll-wrapper {
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+
+  .scene-wrapper {
+    position: fixed;
+    width: auto;
+    height: 100vh;
+    display: flex;
+  }
+
+  section {
+    position: relative;
+    width: 120vw;
+    height: 100vh;
+    z-index: 2;
+  }
+
+  .scrollbar-track {
+    opacity: 0 !important;
+  }
+}
