@@ -48,27 +48,40 @@ $green: #339966;
     top: 450px;
     left: 0;
     height: 100vh;
-    transition: 5s;
+    transition: 6s;
   }
 
   &-sky {
     position: absolute;
     z-index: 3;
-    top: 20%;
-    left: 100%;
-    width: 30%;
-    animation: skymove 120s linear infinite;
+    width: 20%;
+    animation: skymove linear infinite;
 
     &.-a {
       top: 10%;
-      left: 10%;
-      // animation: skymove 110s linear infinite;
+      left: -10%;
+      --end: 120vw;
+      animation-duration: 40s;
+    }
+
+    &.-b {
+      top: 2%;
+      left: -30%;
+      --end: 125vw;
+      animation-duration: 50s;
+    }
+
+    &.-c {
+      top: 25%;
+      left: -60%;
+      --end: 15vw;
+      animation-duration: 70s;
     }
   }
 
   @keyframes skymove {
-    0% { left: 100%; }
-    100% { left: -100%; }
+    0% { transform: translateX(0); }
+    100% { transform: translateX(var(--end)); }
   }
 }
 
@@ -120,11 +133,11 @@ $green: #339966;
     border-radius: 10px;
     border: 1px solid white;
     box-shadow: 4px 4px gray;
-    transform: scale(0);
-    transition: .8s;
+    opacity: 0;
+    transition: 1.5s ease;
 
     &.show {
-      transform: scale(1);
+      opacity: 1;
     }
 
     &:focus,
@@ -145,7 +158,7 @@ $green: #339966;
   bottom: 5%;
   z-index: 1;
   z-index: 4;
-  transition: 6s;
+  transition: 8s ease;
 
   &.show {
     left: 14%;

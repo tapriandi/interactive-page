@@ -2,15 +2,15 @@
 
 animTitle()
 setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-setInterval(() => { document.getElementById('character').classList.add('show') }, 8000);
+setInterval(() => { document.getElementById('character').classList.add('show') }, 10000);
 
 
 function start() {
-  let btnStart = document.querySelector('.splash');
-  btnStart.classList.add('hide');
+  let splash = document.querySelector('.splash');
+  splash.classList.add('hide');
 
   document.querySelector('.bg-main').style.top = 0
-
+  
   initLottie()
   initSmoothScrollbar()
 }
@@ -36,10 +36,7 @@ class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
       return delta;
     }
 
-    const {
-      x,
-      y
-    } = delta;
+    const { x, y } = delta;
 
     return {
       y: 0,
