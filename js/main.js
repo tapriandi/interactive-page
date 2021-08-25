@@ -3,7 +3,7 @@ duplicateImage('bg-home', './assets/bg/rumah.png', 5)
 duplicateImage('bg-road', './assets/bg/jalan.png', 10)
 animTitle()
 setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-setInterval(() => { document.getElementById('character').classList.add('show') }, 13000);
+setInterval(() => { document.getElementById('character').classList.add('show') }, 12000);
 
 
 function start() {
@@ -105,8 +105,8 @@ function listener({ offset }) {
 
   scrollPercent = (100 * scrollbarInstance.scrollLeft) / document.querySelector(".scene-wrapper").getBoundingClientRect().width;
   x = offset.x;
-  parallax(document.querySelector('.bg-home'), offset.x, -0.04, 1)
-  parallax(document.querySelector('.bg-road'), offset.x, -0.5, 1)
+  parallax(document.querySelector('.bg-home > div'), x, -0.02, 1)
+  parallax(document.querySelector('.bg-road > div'), x, -0.5, 1)
   // parallax(document.querySelector('.bg-shadow'), offset.x, -0.5, 1)
 }
 
@@ -117,13 +117,16 @@ function parallax(el, x, value, scale) {
 
 // duplicate image
 function duplicateImage(x, src, value) {
-  let c = document.querySelector(`.${x}`)
-
+  let c = document.querySelector(`.${x}`),
+      wrap = document.createElement('div')
+  
   for (let i = 0; i < value; i++) {
     let img = document.createElement('img')
     img.src = src
-    c.appendChild(img)
+    wrap.appendChild(img)
   }
+
+  c.appendChild(wrap)
 }
 
 // function move2(x) {
