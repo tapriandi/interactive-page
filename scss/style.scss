@@ -8,9 +8,9 @@
   font-family: 'Tommy Soft';
   src: url('../assets/fonts/MADETommySoft-Bold.eot');
   src: url('../assets/fonts/') format('embedded-opentype'),
-      url('../assets/fonts/MADETommySoft-Bold.woff2') format('woff2'),
-      url('../assets/fonts/MADETommySoft-Bold.woff') format('woff'),
-      url('../assets/fonts/MADETommySoft-Bold.ttf') format('truetype');
+    url('../assets/fonts/MADETommySoft-Bold.woff2') format('woff2'),
+    url('../assets/fonts/MADETommySoft-Bold.woff') format('woff'),
+    url('../assets/fonts/MADETommySoft-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
   font-display: swap;
@@ -20,9 +20,9 @@
   font-family: 'MADE Tommy Soft';
   src: url('../assets/fonts/MADETommySoft-Black.eot');
   src: url('../assets/fonts/MADETommySoft-Black.eot?#iefix') format('embedded-opentype'),
-      url('../assets/fonts/MADETommySoft-Black.woff2') format('woff2'),
-      url('../assets/fonts/MADETommySoft-Black.woff') format('woff'),
-      url('../assets/fonts/MADETommySoft-Black.ttf') format('truetype');
+    url('../assets/fonts/MADETommySoft-Black.woff2') format('woff2'),
+    url('../assets/fonts/MADETommySoft-Black.woff') format('woff'),
+    url('../assets/fonts/MADETommySoft-Black.ttf') format('truetype');
   font-weight: 900;
   font-style: normal;
   font-display: swap;
@@ -56,59 +56,55 @@ $green: #339966;
     object-position: center;
   }
 
-  &-home, &-shadow, &-road {
+  &-home,
+  &-shadow,
+  &-road {
     position: absolute;
     top: 450px;
     left: 0;
     height: 100vh;
+
+    img {
+      height: 100%;
+    }
   }
 
   &-shadow {
     z-index: 1;
-    transition: 14s;
+    transition: 11s;
   }
 
   &-home {
+    display: flex;
     z-index: 2;
     transition: 8s;
   }
 
   &-road {
+    display: flex;
     z-index: 3;
     transition: 9s;
   }
 
   &-cloud {
     position: absolute;
-    z-index: 3;
-    width: 20%;
-    animation: cloudMove linear infinite;
-
-    &.-a {
-      top: 10%;
-      left: -10%;
-      --end: 120vw;
-      animation-duration: 40s;
-    }
-
-    &.-b {
-      top: 2%;
-      left: -30%;
-      --end: 125vw;
-      animation-duration: 50s;
-    }
-
-    &.-c {
-      top: 25%;
-      left: -60%;
-      --end: 15vw;
-      animation-duration: 70s;
-    }
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    animation: wind 40s linear infinite;
+    background: url(../assets/cloud/cloud.png) 0, 100px;
   }
 
-  @keyframes cloudMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(var(--end)); }
+  @keyframes wind {
+    0% {
+      background-position: 0 100px;
+    }
+
+    100% {
+      background-position: 1000px 100px;
+    }
   }
 }
 
@@ -137,13 +133,17 @@ $green: #339966;
     justify-content: center;
     text-shadow: -3px -3px 0 white, -3px -2px 0 white, -3px -1px 0 white, -3px 0px 0 white, -3px 1px 0 white, -3px 2px 0 white, -3px 3px 0 white, -2px -3px 0 white, -2px -2px 0 white, -2px -1px 0 white, -2px 0px 0 white, -2px 1px 0 white, -2px 2px 0 white, -2px 3px 0 white, -1px -3px 0 white, -1px -2px 0 white, -1px -1px 0 white, -1px 0px 0 white, -1px 1px 0 white, -1px 2px 0 white, -1px 3px 0 white, 0px -3px 0 white, 0px -2px 0 white, 0px -1px 0 white, 0px 0px 0 white, 0px 1px 0 white, 0px 2px 0 white, 0px 3px 0 white, 1px -3px 0 white, 1px -2px 0 white, 1px -1px 0 white, 1px 0px 0 white, 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 2px -3px 0 white, 2px -2px 0 white, 2px -1px 0 white, 2px 0px 0 white, 2px 1px 0 white, 2px 2px 0 white, 2px 3px 0 white, 3px -3px 0 white, 3px -2px 0 white, 3px -1px 0 white, 3px 0px 0 white, 3px 1px 0 white, 3px 2px 0 white, 3px 3px 0 white;
 
-    & > span:nth-child(1), span:nth-child(11) {
+    &>span:nth-child(1),
+    span:nth-child(11) {
       margin-top: 5px;
     }
-    & > span:nth-child(2), span:nth-child(9) {
+
+    &>span:nth-child(2),
+    span:nth-child(9) {
       margin-top: 2px;
     }
-    & > span:nth-child(10) {
+
+    &>span:nth-child(10) {
       margin-top: 3px;
     }
   }

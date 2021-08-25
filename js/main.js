@@ -1,8 +1,9 @@
 // play animation
-
+duplicateImage('bg-home', './assets/bg/rumah.png', 5)
+duplicateImage('bg-road', './assets/bg/jalan.png', 10)
 animTitle()
 setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-setInterval(() => { document.getElementById('character').classList.add('show') }, 11000);
+setInterval(() => { document.getElementById('character').classList.add('show') }, 13000);
 
 
 function start() {
@@ -28,6 +29,31 @@ var scrollbarInstance = null,
   speed = 0.8,
   bike = null,
   scrollPercent = 0
+
+// opening title
+function animTitle() {
+  let id = document.getElementById('main-title'),
+      text = "Cerita Mata",
+      temp = [],
+      count = 0
+
+  for (let i = 0; i < text.length; i++) {
+    temp.push(text[i])
+  }
+
+  setInterval(() => {
+    if (count < temp.length) {
+      let s = document.createElement('span')
+      if(text[count] == ' ') {
+        s.innerHTML = '&nbsp;'
+      } else {
+        s.innerHTML = text[count]
+      }
+      id.append(s)
+      count ++
+    }
+  }, 200);
+}
 
 // chage to horizontal
 class HorizontalScrollPlugin extends Scrollbar.ScrollbarPlugin {
@@ -69,7 +95,7 @@ function initLottie() {
   });
 }
 
-// direction listener
+// direction listener and parallax
 function listener({ offset }) {
   if (offset.x >= x) {
     direction = "right";
@@ -79,12 +105,25 @@ function listener({ offset }) {
 
   scrollPercent = (100 * scrollbarInstance.scrollLeft) / document.querySelector(".scene-wrapper").getBoundingClientRect().width;
   x = offset.x;
-  parallax(document.querySelector('.bg-home'), offset.x, -0.5, 1)
+  parallax(document.querySelector('.bg-home'), offset.x, -0.04, 1)
+  parallax(document.querySelector('.bg-road'), offset.x, -0.5, 1)
+  // parallax(document.querySelector('.bg-shadow'), offset.x, -0.5, 1)
 }
 
-
+// parallax
 function parallax(el, x, value, scale) {
   el.style.transform = `translate3d(${x * value}px, 0, 0) scale(${scale})`;
+}
+
+// duplicate image
+function duplicateImage(x, src, value) {
+  let c = document.querySelector(`.${x}`)
+
+  for (let i = 0; i < value; i++) {
+    let img = document.createElement('img')
+    img.src = src
+    c.appendChild(img)
+  }
 }
 
 // function move2(x) {
@@ -94,41 +133,17 @@ function parallax(el, x, value, scale) {
 //   bike.goToAndStop(Math.round(calc), true)
 // }
 
-function move(direction) {
-  let that = this;
-  direction == "right" ? (x += 240) : (x -= 240);
-  TweenMax.to(option, 1, {
-    x: x,
-    ease: Power4.easeOut,
-    onUpdate() {
-      that.scrollbarInstance.scrollTo(option.x, 0);
-    },
-  });
+// function move(direction) {
+//   let that = this;
+//   direction == "right" ? (x += 240) : (x -= 240);
+//   TweenMax.to(option, 1, {
+//     x: x,
+//     ease: Power4.easeOut,
+//     onUpdate() {
+//       that.scrollbarInstance.scrollTo(option.x, 0);
+//     },
+//   });
 
-  // console.log(direction)
-}
+//   // console.log(direction)
+// }
 
-
-function animTitle() {
-  let id = document.getElementById('main-title'),
-      text = "Cerita Mata",
-      temp = [],
-      count = 0
-
-  for (let i = 0; i < text.length; i++) {
-    temp.push(text[i])
-  }
-
-  setInterval(() => {
-    if (count < temp.length) {
-      let s = document.createElement('span')
-      if(text[count] == ' ') {
-        s.innerHTML = '&nbsp;'
-      } else {
-        s.innerHTML = text[count]
-      }
-      id.append(s)
-      count ++
-    }
-  }, 200);
-}
