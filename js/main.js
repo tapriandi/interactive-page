@@ -2,27 +2,29 @@
 duplicateImage('bg-home', './assets/bg/rumah.png', 5)
 duplicateImage('bg-road', './assets/bg/jalan.png', 10)
 animTitle()
-setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-setInterval(() => { document.getElementById('character').classList.add('show') }, 12000);
+setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000); // 3000
+setInterval(() => { document.getElementById('character').classList.add('show') }, 12000); //12000
 
 
 function start() {
   let splash = document.querySelector('.splash');
   splash.classList.add('hide');
-
+  
   document.querySelector('.bg-home').style.top = 0
   document.querySelector('.bg-shadow').style.top = 0
   document.querySelector('.bg-road').style.top = 0
   
   initLottie()
-  initSmoothScrollbar()
+  setInterval(() => {
+    initSmoothScrollbar()
+  }, 13000); //13000
 }
 
 
 
 
 // --------------------------------------------------------
-// variable
+// variable.
 var scrollbarInstance = null,
   direction = '',
   x = 0,
@@ -77,10 +79,12 @@ Scrollbar.use(HorizontalScrollPlugin);
 function initSmoothScrollbar() {
   scrollbarInstance = Scrollbar.init(
     document.querySelector(".scroll-wrapper"), {
-      damping: 0.02,
+      damping: 0.04,
     }
   );
   scrollbarInstance.addListener(listener);
+
+
 }
 
 // lottie
@@ -106,8 +110,7 @@ function listener({ offset }) {
   scrollPercent = (100 * scrollbarInstance.scrollLeft) / document.querySelector(".scene-wrapper").getBoundingClientRect().width;
   x = offset.x;
   parallax(document.querySelector('.bg-home > div'), x, -0.02, 1)
-  parallax(document.querySelector('.bg-road > div'), x, -0.5, 1)
-  // parallax(document.querySelector('.bg-shadow'), offset.x, -0.5, 1)
+  parallax(document.querySelector('.bg-road > div'), x, -0.4, 1)
 }
 
 // parallax

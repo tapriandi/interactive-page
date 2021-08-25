@@ -30,8 +30,11 @@
 
 $tommyBlack: 'MADE Tommy Soft';
 $tommyBold: 'Tommy Soft';
-$darkblue: #006699;
+$bluedark: #006699;
+$blue: #3399cc;
+$bluelight: #66ccff;
 $green: #339966;
+$greenlight: #00cc99;
 
 .app-wrapper {
   position: relative;
@@ -64,7 +67,7 @@ $green: #339966;
     left: 0;
     height: 100vh;
 
-    & > div {
+    &>div {
       display: flex;
       height: 100%;
       transition: .2s;
@@ -158,7 +161,7 @@ $green: #339966;
     padding: 6px 40px;
     cursor: pointer;
     font-size: 24px;
-    color: $darkblue;
+    color: $bluedark;
     transition: 0.5s;
     background: white;
     border-radius: 10px;
@@ -175,8 +178,8 @@ $green: #339966;
     &:hover,
     &:active {
       color: white;
-      background: $darkblue;
-      border-color: $darkblue;
+      background: $bluedark;
+      border-color: $bluedark;
       box-shadow: 0px 0px gray;
     }
   }
@@ -217,9 +220,138 @@ $green: #339966;
     width: 120vw;
     height: 100vh;
     z-index: 2;
-  }
 
-  .scrollbar-track {
-    opacity: 0 !important;
+    &.scene {
+      &-1 {
+        width: 180vw;
+
+        .btn-sprite {
+          left: 70%;
+          background-image: url(../assets/eye/reg.png);
+        }
+      }
+
+      &-2 {
+        width: 100vw;
+        
+        .btn-sprite.-b {
+          left: 50%;
+          background: $green;
+        }
+      }
+
+      &-3 {
+        width: 150vw;
+        
+        .btn-sprite {
+          left: 70%;
+          background-image: url(../assets/eye/dry.png);
+        }
+      }
+
+      &-4 {
+        width: 100vw;
+        
+        .btn-sprite.-b {
+          left: 50%;
+          background: $blue;
+        }
+      }
+
+      &-5 {
+        width: 150vw;
+        
+        .btn-sprite {
+          left: 70%;
+          background-image: url(../assets/eye/dry.png);
+        }
+      }
+
+      &-6 {
+        width: 100vw;
+        
+        .btn-sprite.-b {
+          left: 50%;
+          background: $blue;
+        }
+      }
+    }
+
+    .btn-sprite {
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      width: 75px;
+      height: 75px;
+      
+      &.-a {
+        transition: 0.25s;
+        background-size: auto 75px;
+        animation: sprite 5s infinite steps(150) forwards;
+      }
+
+      &.-b {
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+
+        img {
+          width: 36%;
+        }
+
+        p {
+          color: white;
+          font-size: 12px;
+          padding: 5px 20% 0;
+          line-height: 1;
+          font-family: $tommyBold;
+        }
+
+        &:hover {
+          transform: scale(1.05);
+        }
+      }
+    }
+
+    @keyframes sprite {
+      0% {
+        background-position-x: 0px;
+      }
+
+      100% {
+        background-position-x: -22500px;
+      }
+    }
+
+    .scrollbar-track {
+      opacity: 0 !important;
+    }
+  }
+}
+
+.pop-full {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(51, 153, 102, 0.5);
+
+  .wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding: 30px;
+    border-radius: 20px;
+    background: $greenlight;
+    transform: translate(-50%, -50%);
+
+    p {
+      color: white;
+    }
   }
 }
