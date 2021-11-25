@@ -1,9 +1,11 @@
 // play animation
-duplicateImage('bg-home', './assets/images/bg/rumah.png', 5)
-duplicateImage('bg-road', './assets/images/bg/jalan.png', 10)
-animTitle()
-setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-setInterval(() => { document.getElementById('character').classList.add('show') }, 10000);
+document.addEventListener('DOMContentLoaded', () => {
+  duplicateImage('bg-home', './assets/images/bg/rumah.png', 5)
+  duplicateImage('bg-road', './assets/images/bg/jalan.png', 10)
+  animTitle()
+  setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
+  setInterval(() => { document.getElementById('character').classList.add('show') }, 10000);
+})
 
 
 function start() {
@@ -37,7 +39,7 @@ var scrollbarInstance = null,
 // opening title
 function animTitle() {
   let id = document.getElementById('main-title'),
-      text = "Cerita Mata",
+      text = "Izmi Nafiz",
       temp = [],
       count = 0
 
