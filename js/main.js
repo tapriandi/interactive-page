@@ -39,7 +39,7 @@ var scrollbarInstance = null,
 // opening title
 function animTitle() {
   let id = document.getElementById('main-title'),
-      text = "Izmi Nafiz",
+      text = "Cerita Mata",
       temp = [],
       count = 0
 
