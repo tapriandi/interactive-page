@@ -5,7 +5,7 @@
 }
 
 @font-face {
-  font-family: 'Tommy Soft';
+  font-family: 'Tommy Soft Bold';
   src: url('../assets/fonts/MADETommySoft-Bold.eot');
   src: url('../assets/fonts/') format('embedded-opentype'),
     url('../assets/fonts/MADETommySoft-Bold.woff2') format('woff2'),
@@ -28,6 +28,18 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Tommy Soft';
+  src: url('../assets/fonts/MADETommySoft.eot');
+  src: url('../assets/fonts/MADETommySoft.eot?#iefix') format('embedded-opentype'),
+      url('../assets/fonts/MADETommySoft.woff2') format('woff2'),
+      url('../assets/fonts/MADETommySoft.woff') format('woff'),
+      url('../assets/fonts/MADETommySoft.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 
 $white: white;
 $red: #ff3333;
@@ -37,11 +49,14 @@ $blue-op: rgba(0, 153, 255, 0.8);
 $purple: #523091;
 $green: #339966;
 $green-op: rgba(51, 153, 102, 0.8);
+$bluecool: #effbff;
+$bluedry: #7DDAF9;
 $bluedark: #006699;
 $bluedark-op: rgba(0, 102, 153, 0.8);
 
 $tommyBlack: 'MADE Tommy Soft';
-$tommyBold: 'Tommy Soft';
+$tommyBold: 'Tommy Soft Bold';
+$tommy: 'Tommy Soft';
 $darkblue: #006699;
 $green: #339966;
 
@@ -59,7 +74,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
 
 .bg {
   position: absolute;
-  z-index: 0;
+  z-index: 1;
   top: 0;
   left: 0;
   width: 100%;
@@ -170,7 +185,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
   }
 
   button {
-    font-family: 'Tommy Soft';
+    font-family: $tommyBold;
     transition-delay: 1000;
     padding: 6px 40px;
     cursor: pointer;
@@ -224,85 +239,19 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
 
   .scene-wrapper {
     position: fixed;
-    width: 11000vh;
+    width: 10000vh;
     height: 100vh;
     display: flex;
   }
-
-  section {
-    position: relative;
-    height: 100vh;
-    z-index: 2;
-  }
-
+  
   .scrollbar-track {
     opacity: 0 !important;
   }
 }
 
-section {
-  position: relative;
-  height: 100vh;
-  z-index: 2;
-  &#scene {
-    &-1 {
-      width: 12000vw;
-
-      .btn-sprite {
-        left: 70%;
-      }
-    }
-
-    &-2 {
-      width: 100vw;
-      
-      .btn-sprite.-b {
-        left: 50%;
-        background: $green;
-      }
-    }
-
-    &-3 {
-      width: 150vw;
-      
-      .btn-sprite {
-        left: 70%;
-        background-image: url(../assets/images/eye/dry.png);
-      }
-    }
-
-    &-4 {
-      width: 100vw;
-      
-      .btn-sprite.-b {
-        left: 50%;
-        background: $blue;
-      }
-    }
-
-    &-5 {
-      width: 150vw;
-      
-      .btn-sprite {
-        left: 70%;
-        background-image: url(../assets/images/eye/dry.png);
-      }
-    }
-
-    &-6 {
-      width: 100vw;
-      
-      .btn-sprite.-b {
-        left: 50%;
-        background: $blue;
-      }
-    }
-  }
-}
-
 .stories {
   position: absolute;
-  width: auto;
+  width: 1000vw;
   top: 0;
   left: 0;
   z-index: 4;
@@ -312,39 +261,50 @@ section {
   .scene {
     &-1 {
       position: relative;
-      width: 180vw;
+      width: 20%;
+      // width: 180vw;
 
-      .btn-sprite {
-        left: 80%;
+      .msg-group {
+        left: 70%;
       }
     }
 
     &-2 {
       position: relative;
-      width: 200vw;
+      width: 25%;
+      // width: 200vw;
 
-      .btn-sprite {
-        &.-b:nth-child(1) {
-          left: 40%;
+      .msg-group:nth-child(1) {
+        left: 35%;
+        .btn-sprite.-b {
           background: $green;
         }
-        &.-b:nth-child(2) {
-          left: 80%;
-          background: $blue-op;
+      }
+      .msg-group:nth-child(2) {
+        left: 60%;
+        .msg {
+          background: $bluecool;
+        }
+        .btn-sprite.-b {
+          background: $blue;
         }
       }
     }
 
     &-3 {
       position: relative;
-      width: 300vw;
+      width: 25%;
+      // width: 300vw;
 
-      .btn-sprite {
-        &.-a {
-          left: 35%;
+      .msg-group:nth-child(1) {
+        left: 35%;
+      }
+      .msg-group:nth-child(2) {
+        left: 70%;
+        .msg {
+          background: $bluedry;
         }
-        &.-b {
-          left: 75%;
+        .btn-sprite.-b {
           background: $blue;
         }
       }
@@ -352,14 +312,18 @@ section {
 
     &-4 {
       position: relative;
-      width: 200vw;
+      width: 30%;
+      // width: 200vw;
 
-      .btn-sprite {
-        &.-a {
-          left: 30%;
+      .msg-group:nth-child(1) {
+        left: 35%;
+      }
+      .msg-group:nth-child(2) {
+        left: 60%;
+        .msg {
+          background: $bluedry;
         }
-        &.-b {
-          left: 60%;
+        .btn-sprite.-b {
           background: $blue;
         }
       }
@@ -367,73 +331,72 @@ section {
   }
 }
 
-.btn-sprite {
-  position: absolute;
-  cursor: pointer;
-  top: 50%;
-  width: 75px;
-  height: 75px;
-  transition: 0.5s;
-  transform: translate(-50%, -50%);
-
-  &.-a {
-    transition: 0.25s;
-    background-size: auto 75px;
-    background-image: url(../assets/images/eye/reg.png);
-    animation: sprite 5s infinite steps(150) forwards;
-  }
-
-  &.-b {
-    border-radius: 50%;
-    text-align: center;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-
-    img {
-      width: 36%;
-    }
-
-    p {
-      color: white;
-      font-size: 12px;
-      padding: 5px 20% 0;
-      line-height: 1;
-      font-family: $tommyBold;
-    }
-
-  }
-
-  
-}
 
 .msg-group {
   position: absolute;
-  height: 60px;
-  width: 60px;
   top: 50%;
-  left: 42%;
+
   .msg {
     position: absolute;
-    width: 400px;
-    bottom: 150%;
-    left: -20%;
-    opacity: 0;
     padding: 20px;
+    width: 260px;
+    left: 0;
+    bottom: 100px;
     line-height: 1.4;
-    padding-right: 60px;
-    border-radius: 20px;
-    background: $white;
-    transition: $jelly2;
-    transform: scale(0);
-    transform-origin: left bottom;
-    img {
-      position: absolute;
-      top: -30%;
-      left: 80%;
-      width: 50%;
+    border-radius: 15px;
+    // opacity: 0;
+    // transition: $jelly2;
+    // transform: scale(0);
+    // transform-origin: left bottom;
+
+    p {
+      font-family: $tommy;
     }
+
+    h5 {
+      font-size: 16px;
+      font-family: $tommyBold;
+    }
+
+    & > img, & > .wrap {
+      position: absolute;
+    }
+
+    &.product {
+      padding: 30px 180px 30px 30px;
+
+      p {
+        color: $blue;
+      }
+      h5 {
+        color: $darkblue;
+      }
+      .wrap {
+        bottom: 10%;
+        width: 45%;
+        left: 55%;
+        text-align: center;
+        img {
+          width: 100%;
+        }
+      }
+    }
+
+    &.desc {
+      background: white;
+      padding: 25px 100px 25px 30px;
+
+      p {
+        color: $green;
+      }
+      
+      img {
+        bottom: 15%;
+        left: 80%;
+        width: 45%;
+      }
+    }
+
     &.-a {
       left: 150%;
       top: -40%;
@@ -442,7 +405,7 @@ section {
       img {
         top: -18%;
         left: 42%;
-        width: 60%;
+        width: 50%;
       }
     }
     &.close {
@@ -450,6 +413,8 @@ section {
       opacity: 1;
     }
   }
+  
+
   .pulse-btn {
     cursor: pointer;
     width: 100%;
@@ -524,6 +489,178 @@ section {
     left: 50%;
   }
 }
+
+
+.btn-sprite {
+  // position: absolute;
+  cursor: pointer;
+  // top: 50%;
+  width: 75px;
+  height: 75px;
+  // transition: 0.5s;
+  // transform: translate(-50%, -50%);
+
+  &.-a {
+    transition: 0.25s;
+    background-size: auto 75px;
+    background-image: url(../assets/images/eye/reg.png);
+    animation: sprite 5s infinite steps(150) forwards;
+  }
+
+  &.-b {
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+
+    img {
+      width: 36%;
+    }
+
+    p {
+      color: white;
+      font-size: 12px;
+      padding: 5px 20% 0;
+      line-height: 1;
+      font-family: $tommyBold;
+    }
+
+  }
+}
+
+.pop-full {
+  position: fixed;
+  z-index: 4;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+
+  .content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 700px;
+    padding: 40px 60px;
+    border-radius: 20px;
+    transform: translate(-50%, -50%);
+    background: $bluedry;
+
+    & > p {
+      color: white;
+      font-size: 16px;
+      font-family: $tommy;
+      line-height: 1.4;
+      padding-bottom: 12px;
+      .bold {
+        font-family: $tommyBold;
+      }
+
+      &:nth-child(3) {
+        width: 60%;
+      }
+    }
+  }
+
+  .amaran {
+    position: relative;
+    padding: 50px 0 10px;
+    font-family: $tommy;
+
+    & > P {
+      font-size: 10px;
+      padding-bottom: 6px;
+    }
+
+    &.dry-eye {
+      background: #1C92B8;
+      .amaran-card.regular {
+        display: none;
+      }
+      .note .regular {
+        display: none;
+      }
+    }
+
+    &.regular {
+      background: #72BE51;
+      .amaran-card.dry-eye {
+        display: none;
+      }
+      .note .dry-eye {
+        display: none;
+      }
+    }
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .wrap {
+        width: 32.5%;
+
+        .pin {
+          margin: 6px 0;
+          font-size: 10px;
+        }
+        &:nth-child(2) .pin {
+          text-align: center;
+        }
+
+        &:nth-child(3) .pin {
+          text-align: right;
+        }
+      }
+
+      img {
+        position: absolute;
+        width: 150px;
+        right: 0;
+        top: -39%;
+      }
+    }
+
+    &-card {
+      display: flex;
+      height: 50px;
+      padding: 5px 10px;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #444444;
+      margin-bottom: 10px;
+
+      &:nth-child(2) {
+        margin-bottom: 0;
+      }
+
+      &.bg-blue {
+        background: #1C92B8;
+      }
+
+      &.bg-green {
+        background: #72BE51;
+      }
+
+      img {
+        width: 40px;
+        margin-right: 5px;
+      }
+
+      p {
+        font-size: 8px;
+        line-height: 1.4;
+        color: white;
+        margin: 0;
+        text-align: center;
+      }
+    }
+  }
+}
+
 
 @keyframes sprite {
   0% {

@@ -1,6 +1,6 @@
 // play animation
 document.addEventListener('DOMContentLoaded', () => {
-  duplicateImage('bg-home', './assets/images/bg/rumah.png', 5)
+  duplicateImage('bg-home', './assets/images/bg/gedung.png', 5)
   duplicateImage('bg-road', './assets/images/bg/jalan.png', 10)
   animTitle()
   setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
@@ -16,11 +16,10 @@ function start() {
   document.querySelector('.bg-shadow').style.top = 0
   document.querySelector('.bg-road').style.top = 0
   
-  
   initLottie()
   setInterval(() => {
-    initSmoothScrollbar()
     document.querySelector('.stories').style.display = 'flex'
+    initSmoothScrollbar()
   }, 11000); //13000
 }
 
@@ -111,9 +110,9 @@ function listener({ offset }) {
 
   scrollPercent = (100 * scrollbarInstance.scrollLeft) / document.querySelector(".scene-wrapper").getBoundingClientRect().width;
   x = offset.x;
-  parallax(document.querySelector('.bg-home > div'), x, -0.02, 1)
-  parallax(document.querySelector('.bg-road > div'), x, -0.15, 1)
-  parallax(document.querySelector('.stories'), x, -0.15, 1)
+  parallax(document.querySelector('.bg-home > div'), x, -0.05, 1)
+  parallax(document.querySelector('.bg-road > div'), x, -0.10, 1)
+  parallax(document.querySelector('.stories'), x, 0.9, 1)
 }
 
 // parallax
