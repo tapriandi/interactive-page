@@ -20,7 +20,7 @@ function start() {
   setInterval(() => {
     document.querySelector('.stories').style.display = 'flex'
     initSmoothScrollbar()
-  }, 11000); //13000
+  }, 10000); //13000
 }
 
 
@@ -132,6 +132,12 @@ function duplicateImage(x, src, value) {
   }
 
   c.appendChild(wrap)
+}
+
+// popup button
+document.querySelector('.btn-sprite').onclick = () => {
+  console.log('laksdfalkdsjfalkdsjflkdjsf')
+  document.querySelector('.msg').classList.toggle('active');
 }
 
 // function move2(x) {

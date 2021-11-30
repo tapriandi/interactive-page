@@ -60,7 +60,7 @@ $tommy: 'Tommy Soft';
 $darkblue: #006699;
 $green: #339966;
 
-$jelly : all .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+$jelly1 : all .4s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 $jelly2 : all .8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 
 $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #fff, -3px 1px 0 #fff, -3px 2px 0 #fff, -3px 3px 0 #fff, -2px -3px 0 #fff, -2px -2px 0 #fff, -2px -1px 0 #fff, -2px 0px 0 #fff, -2px 1px 0 #fff, -2px 2px 0 #fff, -2px 3px 0 #fff, -1px -3px 0 #fff, -1px -2px 0 #fff, -1px -1px 0 #fff, -1px 0px 0 #fff, -1px 1px 0 #fff, -1px 2px 0 #fff, -1px 3px 0 #fff, 0px -3px 0 #fff, 0px -2px 0 #fff, 0px -1px 0 #fff, 0px 0px 0 #fff, 0px 1px 0 #fff, 0px 2px 0 #fff, 0px 3px 0 #fff, 1px -3px 0 #fff, 1px -2px 0 #fff, 1px -1px 0 #fff, 1px 0px 0 #fff, 1px 1px 0 #fff, 1px 2px 0 #fff, 1px 3px 0 #fff, 2px -3px 0 #fff, 2px -2px 0 #fff, 2px -1px 0 #fff, 2px 0px 0 #fff, 2px 1px 0 #fff, 2px 2px 0 #fff, 2px 3px 0 #fff, 3px -3px 0 #fff, 3px -2px 0 #fff, 3px -1px 0 #fff, 3px 0px 0 #fff, 3px 1px 0 #fff, 3px 2px 0 #fff, 3px 3px 0 #fff;
@@ -344,13 +344,16 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     bottom: 100px;
     line-height: 1.4;
     border-radius: 15px;
-    // opacity: 0;
-    // transition: $jelly2;
-    // transform: scale(0);
-    // transform-origin: left bottom;
+    opacity: 0;
+    transition: $jelly2;
+    transform: scale(0);
+    transform-origin: left bottom;
 
     p {
+      font-size: 0;
       font-family: $tommy;
+      transition: $jelly2;
+      transition-delay: 0.3s;
     }
 
     h5 {
@@ -358,8 +361,13 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       font-family: $tommyBold;
     }
 
-    & > img, & > .wrap {
+    .wrap {
       position: absolute;
+      img {
+        width: 0;
+        transition: $jelly2;
+        transition-delay: 0.5s;
+      }
     }
 
     &.product {
@@ -376,9 +384,6 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
         width: 45%;
         left: 55%;
         text-align: center;
-        img {
-          width: 100%;
-        }
       }
     }
 
@@ -390,30 +395,25 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
         color: $green;
       }
       
-      img {
+      .wrap {
         bottom: 15%;
         left: 80%;
         width: 45%;
       }
     }
 
-    &.-a {
-      left: 150%;
-      top: -40%;
-      bottom: unset;
-      transform-origin: left top;
-      img {
-        top: -18%;
-        left: 42%;
-        width: 50%;
+    &.active {
+      opacity: 1;
+      transform: scale(1);
+
+      p {
+        font-size: 16px;
+      }
+      .wrap img {
+        width: 100%;
       }
     }
-    &.close {
-      transform: scale(1);
-      opacity: 1;
-    }
   }
-  
 
   .pulse-btn {
     cursor: pointer;
@@ -422,7 +422,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     z-index: 1;
     border-radius: 50%;
     transform: scale(0);
-    transition: $jelly;
+    transition: $jelly1;
     animation: pulse 1.2s infinite cubic-bezier(0.3, 0, 0, 1);
     &:hover, &:focus {
       transform: scale(1.4);
@@ -434,7 +434,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       object-fit: cover;
       object-position: 0px 0;
       overflow: hidden;
-      transition: $jelly;
+      transition: $jelly1;
       animation: kedip 5s infinite steps(150) forwards;
       &:hover, &:focus {
         transform: scale(1.4);
@@ -444,7 +444,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       display: flex;
       align-items: center;
       flex-direction: column;
-      transition: $jelly;
+      transition: $jelly1;
       &:hover, &:focus {
         transform: scale(1.4);
       }
@@ -479,15 +479,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       box-shadow: 0 0 0 0 $bluedark-op;
     }
   }
-  &.top {
-    top: 40%;
-  }
-  &.left {
-    left: 20%;
-  }
-  &.center {
-    left: 50%;
-  }
+  
 }
 
 
