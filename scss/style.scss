@@ -69,6 +69,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
   position: relative;
   height: 100vh;
   width: auto;
+  z-index: 1;
   overflow: hidden;
 }
 
@@ -184,33 +185,33 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     }
   }
 
-  button {
-    font-family: $tommyBold;
-    transition-delay: 1000;
-    padding: 6px 40px;
-    cursor: pointer;
-    font-size: 24px;
-    color: $darkblue;
-    transition: 0.5s;
-    background: white;
-    border-radius: 10px;
-    border: 1px solid white;
-    box-shadow: 4px 4px gray;
-    opacity: 0;
-    transition: 2s ease;
+}
+.btn-start {
+  font-family: $tommyBold;
+  transition-delay: 1000;
+  padding: 6px 40px;
+  cursor: pointer;
+  font-size: 24px;
+  color: $darkblue;
+  transition: 0.5s;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid white;
+  box-shadow: 4px 4px gray;
+  opacity: 0;
+  transition: 2s ease;
 
-    &.show {
-      opacity: 1;
-    }
+  &.show {
+    opacity: 1;
+  }
 
-    &:focus,
-    &:hover,
-    &:active {
-      color: white;
-      background: $darkblue;
-      border-color: $darkblue;
-      box-shadow: 0px 0px gray;
-    }
+  &:focus,
+  &:hover,
+  &:active {
+    color: white;
+    background: $darkblue;
+    border-color: $darkblue;
+    box-shadow: 0px 0px gray;
   }
 }
 
@@ -322,6 +323,13 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
         .btn-sprite.-b {
           background: $blue;
         }
+      }
+
+      .btn-start {
+        position: absolute;
+        top: 50%;
+        left: 60%;
+        opacity: 1;
       }
     }
   }
@@ -537,12 +545,27 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
 
 .pop-full {
   position: fixed;
-  z-index: 4;
+  z-index: -1;
+  opacity: 0;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background: rgba(0, 0, 0, 0.5);
+  transition: $jelly2;
+
+  &.active {
+    z-index: 42;
+    opacity: 1;
+  }
+
+  .btn-start {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    opacity: 1;
+    transform: translateX(-50%);
+  }
 
   .content {
     position: absolute;
@@ -714,6 +737,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     font-family: $tommyBold;
   }
 }
+
 
 
 @keyframes sprite {

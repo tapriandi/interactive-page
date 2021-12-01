@@ -145,7 +145,6 @@ btnSprite.forEach(e => {
   }
 });
 
-
 // smoke
 function smokes(className, amount) {
   let wrap = document.querySelector(`.${className}`)
@@ -162,6 +161,13 @@ function smokes(className, amount) {
   }
 }
 
+// amaran
+function amaran() {
+  document.querySelector('.pop-full').classList.add('active')
+}
+function closeAmaran() {
+  document.querySelector('.pop-full').classList.remove('active')
+}
 
 // function move2(x) {
 //   let frame = bike.totalFrame,
