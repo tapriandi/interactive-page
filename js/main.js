@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   duplicateImage('bg-road', './assets/images/bg/jalan.png', 10)
   animTitle()
   setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
-  setInterval(() => { document.getElementById('character').classList.add('show') }, 10000);
+  setTimeout(() => { document.getElementById('character').classList.add('show') }, 10000);
 })
 
 
@@ -17,10 +17,13 @@ function start() {
   document.querySelector('.bg-road').style.top = 0
   
   initLottie()
-  setInterval(() => {
+  setTimeout(() => {
     document.querySelector('.stories').style.display = 'flex'
     initSmoothScrollbar()
   }, 10000); //13000
+  smoke('smoke-2', 40)
+  smoke('smoke-3', 60)
+  smoke('smoke-4', 30)
 }
 
 
@@ -135,10 +138,31 @@ function duplicateImage(x, src, value) {
 }
 
 // popup button
-document.querySelector('.btn-sprite').onclick = () => {
-  console.log('laksdfalkdsjfalkdsjflkdjsf')
-  document.querySelector('.msg').classList.toggle('active');
+const btnSprite = document.querySelectorAll('.btn-sprite')
+btnSprite.forEach(e => {
+  e.onclick = () => {
+    e.previousElementSibling.classList.toggle('active');
+  }
+});
+
+
+// smoke
+function smoke(className, amount) {
+  let wrap = document.querySelector(`.${className}`)
+  
+  for (let i = 0; i < amount; i++) {
+    let img = document.createElement('img'),
+        width = Math.floor(Math.random() * (i + 1) * 150),
+        top = Math.floor(Math.random() * (i + 1) * 3),
+        left = Math.floor(Math.random() * (i + 1) * 5)
+
+    img.src = './assets/images/smoke/smoke.png'
+    img.style = `width: ${width}px; top: ${top}%; left: ${left}%;`
+    img.classList = 'up'
+    wrap.appendChild(img)
+  }
 }
+
 
 // function move2(x) {
 //   let frame = bike.totalFrame,

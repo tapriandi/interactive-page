@@ -226,10 +226,6 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
   &.show {
     left: 14%;
   }
-
-  @media (max-width: 768px) {
-    width: 45%;
-  }
 }
 
 .scroll-wrapper {
@@ -265,7 +261,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       // width: 180vw;
 
       .msg-group {
-        left: 70%;
+        left: 60%;
       }
     }
 
@@ -275,7 +271,7 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       // width: 200vw;
 
       .msg-group:nth-child(1) {
-        left: 35%;
+        left: 30%;
         .btn-sprite.-b {
           background: $green;
         }
@@ -297,10 +293,10 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       // width: 300vw;
 
       .msg-group:nth-child(1) {
-        left: 35%;
+        left: 30%;
       }
       .msg-group:nth-child(2) {
-        left: 70%;
+        left: 60%;
         .msg {
           background: $bluedry;
         }
@@ -316,10 +312,10 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       // width: 200vw;
 
       .msg-group:nth-child(1) {
-        left: 35%;
+        left: 25%;
       }
       .msg-group:nth-child(2) {
-        left: 60%;
+        left: 50%;
         .msg {
           background: $bluedry;
         }
@@ -331,10 +327,10 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
   }
 }
 
-
 .msg-group {
   position: absolute;
   top: 50%;
+  z-index: 2;
 
   .msg {
     position: absolute;
@@ -357,8 +353,10 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     }
 
     h5 {
-      font-size: 16px;
+      font-size: 0;
       font-family: $tommyBold;
+      transition: $jelly2;
+      transition-delay: 0.4s;
     }
 
     .wrap {
@@ -391,6 +389,17 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       background: white;
       padding: 25px 100px 25px 30px;
 
+      &:before {
+        position: absolute;
+        content: '';
+        left: 40px;
+        bottom: -20px;
+        width: 0; 
+        height: 0;
+        border-right: 15px solid transparent;
+        border-top: 20px solid white;
+      }
+
       p {
         color: $green;
       }
@@ -409,8 +418,13 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       p {
         font-size: 16px;
       }
-      .wrap img {
-        width: 100%;
+      .wrap {
+        img {
+          width: 100%;
+        }
+        h5 {
+          font-size: 16px;
+        }
       }
     }
   }
@@ -481,7 +495,6 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
   }
   
 }
-
 
 .btn-sprite {
   // position: absolute;
@@ -653,6 +666,44 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
   }
 }
 
+.smoke {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  img {
+    position: absolute;
+    &.up {
+      transition: 1s;
+    }
+    @keyframes smokeUp {
+      
+    }
+  }
+}
+
+.block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+  background: rgba(0, 0, 0, 0.9);
+  align-items: center;
+  justify-content: center;
+
+  p {
+    color: white;
+    font-size: 18px;
+    line-height: 2;
+    text-align: center;
+    font-family: $tommyBold;
+  }
+}
+
 
 @keyframes sprite {
   0% {
@@ -676,5 +727,75 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
 @keyframes pulse {
   to {
     box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+  }
+}
+
+
+@media all and (orientation:portrait) {
+  .block {
+    z-index: 100;
+    display: flex;
+  }
+}
+
+
+@media (max-width: 1023px) {
+  .splash {
+    #main-title {
+      font-size: 50px;
+    }
+    button {
+      font-size: 16px;
+      padding: 4px 20px;
+      border-radius: 5px;
+    }
+  }
+
+  #character {
+    width: 25%;
+  }
+
+  .btn-sprite {
+    width: 50px;
+    height: 50px;
+    &.-b p {
+      font-size: 8px;
+    }
+    &.-a {
+      background-size: auto 50px;
+    }
+  }
+
+  .msg-group {
+    .msg {
+      bottom: 70px;
+      width: 180px;
+
+      &.desc {
+        padding: 10px 60px 10px 15px;
+        &::before {
+          left: 30px;
+        }
+        .wrap {
+          bottom: 5%;
+        }
+      }
+      &.product {
+        padding: 10px 100px 10px 15px;
+        &.active {
+          .wrap {
+            width: 36%;
+            left: 60%;
+          }
+          h5 {
+            font-size: 10px;
+          }
+        }
+      }
+
+      &.active p {
+        font-size: 10px;
+      }
+    }
   }
 }
