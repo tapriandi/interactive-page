@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   duplicateImage('bg-home', './assets/images/bg/gedung.png', 1)
   duplicateImage('bg-road', './assets/images/bg/jalan.png', 10)
   animTitle()
-  setInterval(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
+  setTimeout(() => { document.getElementById('btn-start').classList.add('show') }, 3000);
   setTimeout(() => { document.getElementById('character').classList.add('show') }, 10000);
 })
 
@@ -21,6 +21,12 @@ function start() {
     document.querySelector('.stories').style.display = 'flex'
     initSmoothScrollbar()
   }, 10000); //13000
+  setTimeout(() => {
+    document.querySelector('.guide').classList.add('active')
+    setInterval(() => {
+      document.querySelector('.guide').classList.remove('active')
+    }, 4000);
+  }, 11000)
   smokes('smoke-1', 5)
   smokes('smoke-2', 30)
   smokes('smoke-3', 60)
@@ -142,6 +148,7 @@ const btnSprite = document.querySelectorAll('.btn-sprite')
 btnSprite.forEach(e => {
   e.onclick = () => {
     e.previousElementSibling.classList.toggle('active');
+    e.classList.remove('pulse')
   }
 });
 

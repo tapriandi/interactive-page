@@ -134,6 +134,25 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     background: url(../assets/images/cloud/cloud.png) 0, 100px;
   }
 
+  .guide {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    color: $green;
+    font-size: 30px;
+    font-family: $tommyBold;
+    text-shadow: $text_shadow;
+    transform: translateX(-50%);
+    animation: guide 1s linear infinite;
+    transition: $jelly2;
+    &.active {
+      z-index: 2;
+      opacity: 1;
+    }
+  }
+
   @keyframes wind {
     0% {
       background-position: 0 100px;
@@ -142,6 +161,11 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
     100% {
       background-position: 1000px 100px;
     }
+  }
+
+  @keyframes guide {
+    0% {opacity: 0.3;}
+    100% {opacity: 1;}
   }
 }
 
@@ -436,88 +460,24 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
       }
     }
   }
-
-  .pulse-btn {
-    cursor: pointer;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
-    border-radius: 50%;
-    transform: scale(0);
-    transition: $jelly1;
-    animation: pulse 1.2s infinite cubic-bezier(0.3, 0, 0, 1);
-    &:hover, &:focus {
-      transform: scale(1.4);
-    }
-    .kedip {
-      height: 100%;
-      width: 100%;
-      z-index: 1;
-      object-fit: cover;
-      object-position: 0px 0;
-      overflow: hidden;
-      transition: $jelly1;
-      animation: kedip 5s infinite steps(150) forwards;
-      &:hover, &:focus {
-        transform: scale(1.4);
-      }
-    }
-    &.-buka {
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      transition: $jelly1;
-      &:hover, &:focus {
-        transform: scale(1.4);
-      }
-      img {
-        top: unset;
-        left: unset;
-        width: 35%;
-        margin: 5px 0 3px 0;
-        transform: translate(0,0);
-      }
-      p {
-        font-size: 12px;
-        width: 60%;
-        color: $white;
-        text-align: center;
-      }
-    }
-    &.red {
-      background: $red;
-      box-shadow: 0 0 0 0 $red-op;
-    }
-    &.green {
-      background: $green;
-      box-shadow: 0 0 0 0 $green-op;
-    }
-    &.blue {
-      background: $blue;
-      box-shadow: 0 0 0 0 $blue-op;
-    }
-    &.bluedark {
-      background: $bluedark;
-      box-shadow: 0 0 0 0 $bluedark-op;
-    }
-  }
-  
 }
 
 .btn-sprite {
-  // position: absolute;
   cursor: pointer;
-  // top: 50%;
   width: 75px;
   height: 75px;
-  // transition: 0.5s;
-  // transform: translate(-50%, -50%);
+  border-radius: 50%;
+  box-shadow: 0 0 0 0 rgba(#5a99d4, .5);
+
+  &.pulse {
+    animation: pulse 2s infinite;
+  }
 
   &.-a {
     transition: 0.25s;
     background-size: auto 75px;
     background-image: url(../assets/images/eye/reg.png);
-    animation: sprite 5s infinite steps(150) forwards;
+    // animation: sprite 5s infinite steps(150) forwards;
   }
 
   &.-b {
@@ -760,8 +720,16 @@ $text_shadow: -3px -3px 0 #fff, -3px -2px 0 #fff, -3px -1px 0 #fff, -3px 0px 0 #
 }
 
 @keyframes pulse {
-  to {
-    box-shadow: 0 0 0 45px rgba(232, 76, 61, 0);
+  0% {
+    transform: scale(.9);
+  }
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 50px rgba(#5a99d4, 0);
+  }
+    100% {
+    transform: scale(.9);
+    box-shadow: 0 0 0 0 rgba(#5a99d4, 0);
   }
 }
 
